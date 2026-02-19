@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priyanshu Pandey — Portfolio</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:0 4rem;}
+canvas#heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+.hero-inner{display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:center;width:100%;position:relative;z-index:1;}
+.status-pill{display:inline-flex;align-items:center;gap:0.5rem;background:var(--red-soft);border:1px solid var(--border);border-radius:100px;padding:0.38rem 1rem;font-size:0.78rem;font-weight:600;color:var(--red);margin-bottom:1.6rem;animation:fadeUp 0.7s ease both;}
+.s-dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:blinkDot 2s ease-in-out infinite;}
+@keyframes blinkDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.7)}}
+.hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,7vw,7rem);line-height:0.9;letter-spacing:2px;animation:fadeUp 0.7s 0.1s ease both;}
+.hero-name .l1{display:block;color:var(--text);}
+.hero-name .l2{display:block;color:var(--red);}
+.hero-name .l3{display:block;font-size:0.22em;letter-spacing:0.28em;color:var(--muted);font-family:'DM Mono',monospace;font-weight:400;margin-top:0.6rem;}
+.hero-desc{font-size:0.97rem;color:var(--muted);max-width:460px;margin:1.6rem 0 2.4rem;line-height:1.8;animation:fadeUp 0.7s 0.2s ease both;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp 0.7s 0.3s ease both;}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border-lt);animation:fadeUp 0.7s 0.4s ease both;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--red);line-height:1;}
+.stat-lbl{font-size:0.74rem;color:var(--muted);font-weight:500;margin-top:0.2rem;}
+.hero-visual{display:flex;justify-content:center;align-items:center;animation:fadeUp 0.7s 0.35s ease both;}
+.avatar-scene{position:relative;width:360px;height:420px;}
+.avatar-platform{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:260px;height:20px;background:linear-gradient(135deg,var(--red-glow),rgba(230,32,32,0.05));border-radius:50%;filter:blur(12px);animation:shadowPulse 3s ease-in-out infinite;}
+@keyframes shadowPulse{0%,100%{opacity:0.6;transform:translateX(-50%) scaleX(1)}50%{opacity:1;transform:translateX(-50%) scaleX(1.1)}}
+.orbit{position:absolute;border-radius:50%;border:1px dashed;animation:orbitSpin linear infinite;top:50%;left:50%;}
+.orbit-1{width:320px;height:320px;margin:-160px 0 0 -160px;border-color:rgba(230,32,32,0.18);animation-duration:20s;}
+.orbit-2{width:260px;height:260px;margin:-130px 0 0 -130px;border-color:rgba(230,32,32,0.1);animation-duration:14s;animation-direction:reverse;}
+@keyframes orbitSpin{to{transform:rotate(360deg)}}
+.orbit-dot{position:absolute;top:-5px;left:50%;transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red-glow);}
+.orbit-dot-sm{width:7px;height:7px;background:#ff6b6b;box-shadow:0 0 8px rgba(230,32,32,0.6);top:auto;bottom:-3px;}
+.avatar-3d-wrap{position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);perspective:800px;z-index:5;}
+.avatar-3d{width:210px;height:210px;border-radius:50%;transform-style:preserve-3d;animation:avatar3DFloat 5s ease-in-out infinite;}
+@keyframes avatar3DFloat{0%,100%{transform:rotateX(8deg) rotateY(-8deg) translateY(0px);}33%{transform:rotateX(-4deg) rotateY(10deg) translateY(-18px);}66%{transform:rotateX(6deg) rotateY(4deg) translateY(-8px);}}
+.avatar-face-3d{width:210px;height:210px;border-radius:50%;background:linear-gradient(145deg,var(--cream),var(--surface));border:4px solid var(--red);box-shadow:0 0 0 8px var(--red-soft),0 25px 50px var(--red-glow),inset 0 -10px 30px var(--red-soft);display:flex;align-items:center;justify-content:center;font-size:7rem;position:relative;overflow:hidden;}
+.avatar-face-3d::before{content:'';position:absolute;top:-30%;left:-20%;width:60%;height:50%;background:radial-gradient(ellipse,rgba(255,255,255,0.8) 0%,transparent 70%);border-radius:50%;transform:rotate(-25deg);}
+.fbadge{position:absolute;background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:0.6rem 1rem;font-size:0.78rem;font-weight:600;color:var(--text);display:flex;align-items:center;gap:0.5rem;box-shadow:0 6px 24px var(--shadow);z-index:10;white-space:nowrap;}
+.fbadge-icon{font-size:1rem;}.fbadge-sub{font-size:0.66rem;color:var(--muted);}
+.fb1{top:5%;right:-5%;animation:floatA 4s ease-in-out infinite;}
+.fb2{bottom:20%;left:-12%;animation:floatB 4.5s ease-in-out infinite;}
+.fb3{bottom:2%;right:0%;animation:floatA 5s ease-in-out infinite 0.7s;}
+@keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(9px)}}
+.scroll-cue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;animation:fadeUp 1s 0.8s ease both;}
+.scroll-bar{width:1px;height:44px;background:linear-gradient(180deg,var(--red),transparent);animation:scrollPulse 2s ease-in-out infinite;}
+@keyframes scrollPulse{0%,100%{opacity:1;transform:scaleY(1)}50%{opacity:0.4;transform:scaleY(0.6)}}
+.quick-strip{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border-top:1px solid var(--border-lt);}
+.q-link{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 2rem;text-decoration:none;color:var(--muted);font-weight:600;font-size:0.88rem;border-right:1px solid var(--border-lt);transition:all 0.25s;gap:0.8rem;}
+.q-link:last-child{border-right:none;}
+.q-link:hover{color:var(--red);background:var(--red-soft);}
+.q-link:hover .q-arr{transform:translateX(4px);color:var(--red);}
+.q-icon{font-size:1.2rem;}.q-arr{transition:all 0.2s;color:var(--border);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.hero{padding:5rem 1.8rem 2rem;}.hero-inner{grid-template-columns:1fr;gap:2rem;}.hero-visual{display:none;}.quick-strip{grid-template-columns:1fr 1fr;}.q-link:nth-child(2){border-right:none;}.q-link:nth-child(3),.q-link:nth-child(4){border-top:1px solid var(--border-lt);}.q-link:nth-child(4){border-right:none;}}
+</style>
+</head>
+<body>
+<div class="cursor"></div><div class="cursor-ring"></div><div class="page-bg"></div>
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-circle"><span class="logo-text-inner">PG</span></div>
+    <div class="logo-wordmark"><div class="logo-name">PandeyG</div><div class="logo-tagline">Portfolio 2024</div></div>
+  </div>
+  <ul class="nav-menu">
+    <li><a href="index.html"><span class="nav-icon">🏠</span>Home</a></li>
+    <li><a href="about.html"><span class="nav-icon">👤</span>About</a></li>
+    <li><a href="skills.html"><span class="nav-icon">⚡</span>Skills</a></li>
+    <li><a href="projects.html"><span class="nav-icon">🗂️</span>Projects</a></li>
+    <li><a href="experience.html"><span class="nav-icon">💼</span>Experience</a></li>
+    <li><a href="contact.html"><span class="nav-icon">✉️</span>Contact</a></li>
+  </ul>
+  <div class="theme-toggle-wrap">
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <span class="toggle-label">☀️ Day Mode</span>
+      <div class="toggle-track"><div class="toggle-thumb"></div></div>
+    </button>
+  </div>
+  <div class="sidebar-footer">📍 Delhi, India<br><span>Open to Freelance</span></div>
+</aside>
+<button class="hamburger"><span></span><span></span><span></span></button>
+
+<main class="main">
+  <section class="hero">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-inner">
+      <div>
+        <div class="status-pill"><span class="s-dot"></span>Available for Freelance</div>
+        <h1 class="hero-name">
+          <span class="l1">Priyanshu</span>
+          <span class="l2">Pandey.</span>
+          <span class="l3">BCA Student &amp; Web Developer</span>
+        </h1>
+        <p class="hero-desc">Turning ideas into clean, modern web experiences from Delhi, India. Passionate about front-end craft, creative design, and building things that matter.</p>
+        <div class="hero-ctas">
+          <a href="projects.html" class="btn btn-primary">View Projects →</a>
+          <a href="contact.html" class="btn btn-outline">Let's Talk</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-num"><span class="count-up" data-target="9.1" data-decimals="1">0</span></div><div class="stat-lbl">CGPA</div></div>
+          <div><div class="stat-num"><span class="count-up" data-target="85.66" data-decimals="2" data-suffix="%">0</span></div><div class="stat-lbl">Score</div></div>
+          <div><div class="stat-num"><span class="count-up" data-target="2" data-decimals="0" data-suffix="+">0</span></div><div class="stat-lbl">Projects</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="avatar-scene">
+          <div class="orbit orbit-1"><div class="orbit-dot"></div></div>
+          <div class="orbit orbit-2"><div class="orbit-dot orbit-dot-sm"></div></div>
+          <div class="avatar-3d-wrap"><div class="avatar-3d"><div class="avatar-face-3d">🧑‍💻</div></div></div>
+          <div class="avatar-platform"></div>
+          <div class="fbadge fb1"><span class="fbadge-icon">🎓</span><div><div>BCA @ GGSIPU</div><div class="fbadge-sub">9.1 CGPA</div></div></div>
+          <div class="fbadge fb2"><span class="fbadge-icon">🌐</span><div><div>Web Developer</div><div class="fbadge-sub">Freelancer</div></div></div>
+          <div class="fbadge fb3"><span class="fbadge-icon">🎨</span><div><div>Creative Design</div><div class="fbadge-sub">Photo &amp; Video</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue"><span>Scroll</span><div class="scroll-bar"></div></div>
+  </section>
+  <div class="quick-strip">
+    <a href="about.html" class="q-link reveal"><span><span class="q-icon">👤</span> About Me</span><span class="q-arr">→</span></a>
+    <a href="skills.html" class="q-link reveal" data-delay="80"><span><span class="q-icon">⚡</span> My Skills</span><span class="q-arr">→</span></a>
+    <a href="projects.html" class="q-link reveal" data-delay="160"><span><span class="q-icon">🗂️</span> Projects</span><span class="q-arr">→</span></a>
+    <a href="contact.html" class="q-link reveal" data-delay="240"><span><span class="q-icon">✉️</span> Contact</span><span class="q-arr">→</span></a>
+  </div>
+</main>
+
+<button class="chat-fab" id="chatFab">
+  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l5.09-1.35A9.92 9.92 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.66 0-3.21-.49-4.5-1.33l-.32-.2-3.02.8.82-2.96-.21-.33A7.95 7.95 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.17-5.24c-.23-.12-1.35-.67-1.56-.74s-.36-.12-.51.12-.59.74-.72.9-.26.18-.49.06c-.23-.12-.97-.36-1.85-1.14-.68-.61-1.14-1.36-1.27-1.59s-.01-.35.1-.47c.1-.1.23-.26.34-.39s.15-.23.23-.38.04-.29-.02-.41-.51-1.22-.7-1.68-.37-.38-.51-.39-.28-.01-.43-.01-.39.06-.6.29-.78.76-.78 1.85.8 2.15.91 2.3c.12.15 1.58 2.41 3.82 3.38.53.23.95.37 1.27.47.54.17 1.03.15 1.41.09.43-.07 1.35-.55 1.54-1.08.19-.53.19-.99.13-1.08-.06-.1-.22-.16-.46-.28z"/></svg>
+  <div class="fab-badge">AI</div>
+</button>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-av">🤖</div>
+    <div class="chat-hinfo">
+      <div class="chat-hname">PandeyG Bot ✨</div>
+      <div class="chat-hstatus">Online — Always here for you!</div>
+    </div>
+    <button class="chat-close" id="chatClose">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="quick-replies" id="quickReplies"></div>
+  <div class="chat-input-row">
+    <input type="text" class="chat-input" id="chatInputField" placeholder="Ask me anything about Priyanshu... 😊" maxlength="200">
+    <button class="chat-send" id="chatSendBtn">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

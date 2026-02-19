@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills — Priyanshu Pandey</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.skills-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:3rem;}
+.sum-box{background:var(--card);border:1px solid var(--border-lt);border-radius:14px;padding:1.4rem;text-align:center;box-shadow:0 2px 10px var(--shadow2);transition:all 0.25s;position:relative;overflow:hidden;}
+.sum-box::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transition:transform 0.3s;}
+.sum-box:hover::after{transform:scaleX(1);}
+.sum-box:hover{transform:translateY(-3px);box-shadow:0 8px 24px var(--shadow);}
+.sum-num{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--red);line-height:1;}
+.sum-lbl{font-size:0.76rem;color:var(--muted);font-weight:600;margin-top:0.3rem;}
+.skill-cat{margin-bottom:3rem;}
+.skill-cat-hdr{display:flex;align-items:center;gap:1rem;margin-bottom:1.4rem;padding-bottom:1rem;border-bottom:2px solid var(--border-lt);}
+.cat-ico{width:46px;height:46px;border-radius:12px;background:var(--red-soft);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.cat-name{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.5px;color:var(--text);}
+.cat-desc{font-size:0.78rem;color:var(--muted);font-weight:500;}
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:1rem;}
+.skill-card{background:var(--card);border:1px solid var(--border-lt);border-radius:16px;padding:1.4rem 1rem 1.2rem;text-align:center;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);cursor:default;position:relative;overflow:hidden;box-shadow:0 2px 8px var(--shadow2);}
+.skill-card:hover{transform:translateY(-7px) scale(1.02);border-color:var(--border);box-shadow:0 14px 36px var(--shadow);}
+.sk-icon{font-size:2.2rem;display:block;margin-bottom:0.6rem;}
+.sk-name{font-weight:700;font-size:0.88rem;color:var(--text);margin-bottom:0.6rem;}
+.sk-bar{height:3px;border-radius:100px;background:var(--red-soft);overflow:hidden;margin-top:0.6rem;}
+.sk-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--red),#ff6b6b);transform:scaleX(0);transform-origin:left;transition:transform 0.9s cubic-bezier(0.4,0,0.2,1) 0.2s;}
+.skill-card.animate .sk-fill{transform:scaleX(1);}
+.sk-sub{font-size:0.7rem;color:var(--muted);margin-top:0.35rem;}
+@media(max-width:600px){.skills-summary{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<div class="cursor"></div><div class="cursor-ring"></div><div class="page-bg"></div>
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-circle"><span class="logo-text-inner">PG</span></div>
+    <div class="logo-wordmark"><div class="logo-name">PandeyG</div><div class="logo-tagline">Portfolio 2024</div></div>
+  </div>
+  <ul class="nav-menu">
+    <li><a href="index.html"><span class="nav-icon">🏠</span>Home</a></li>
+    <li><a href="about.html"><span class="nav-icon">👤</span>About</a></li>
+    <li><a href="skills.html"><span class="nav-icon">⚡</span>Skills</a></li>
+    <li><a href="projects.html"><span class="nav-icon">🗂️</span>Projects</a></li>
+    <li><a href="experience.html"><span class="nav-icon">💼</span>Experience</a></li>
+    <li><a href="contact.html"><span class="nav-icon">✉️</span>Contact</a></li>
+  </ul>
+  <div class="theme-toggle-wrap">
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <span class="toggle-label">☀️ Day Mode</span>
+      <div class="toggle-track"><div class="toggle-thumb"></div></div>
+    </button>
+  </div>
+  <div class="sidebar-footer">📍 Delhi, India<br><span>Open to Freelance</span></div>
+</aside>
+<button class="hamburger"><span></span><span></span><span></span></button>
+<main class="main">
+  <div class="page-header">
+    <div class="page-eyebrow">// What I Know</div>
+    <h1 class="page-title">Technical <span class="accent">Skills.</span></h1>
+  </div>
+  <div class="content">
+    <div class="skills-summary reveal">
+      <div class="sum-box"><div class="sum-num">4</div><div class="sum-lbl">Languages</div></div>
+      <div class="sum-box"><div class="sum-num">4</div><div class="sum-lbl">Web Tech</div></div>
+      <div class="sum-box"><div class="sum-num">4</div><div class="sum-lbl">Tools</div></div>
+      <div class="sum-box"><div class="sum-num">4</div><div class="sum-lbl">Creative Apps</div></div>
+    </div>
+    <div class="skill-cat reveal">
+      <div class="skill-cat-hdr"><div class="cat-ico">💻</div><div><div class="cat-name">Programming Languages</div><div class="cat-desc">Core languages I code in</div></div></div>
+      <div class="skill-grid">
+        <div class="skill-card"><span class="sk-icon">⚙️</span><div class="sk-name">C Language</div><div class="sk-bar"><div class="sk-fill"></div></div><div class="sk-sub">Fundamentals</div></div>
+        <div class="skill-card"><span class="sk-icon">🐘</span><div class="sk-name">PHP</div><div class="sk-bar"><div class="sk-fill"></div></div><div class="sk-sub">Backend Dev</div></div>
+        <div class="skill-card"><span class="sk-icon">🐍</span><div class="sk-name">Python</div><div class="sk-bar"><div class="sk-fill"></div></div><div class="sk-sub">Scripting</div></div>
+        <div class="skill-card"><span class="sk-icon">🗄️</span><div class="sk-name">SQL</div><div class="sk-bar"><div class="sk-fill"></div></div><div class="sk-sub">Databases</div></div>
+      </div>
+    </div>
+    <div class="skill-cat reveal">
+      <div class="skill-cat-hdr"><div class="cat-ico">🌐</div><div><div class="cat-name">Web Technologies</div><div class="cat-desc">Front-end development stack</div></div></div>
+      <div class="skill-grid">
+        <div class="skill-card"><span class="sk-icon">🏗️</span><div class="sk-name">HTML5</div><div class="sk-bar"><div class="sk-fill"></div></div><div class="sk-sub">Markup</div></div>
+        <div class="skill-card"><span class="sk-icon">🎨</span><div class="sk-name">CSS3</div><div class="sk-bar"><div class="sk-fill"></div></div><div class="sk-sub">Styling</div></div>
+        <div class="skill-card"><span class="sk-icon">🅱️</span><div class="sk-name">Bootstrap</div><div class="sk-bar"><div class="sk-fill"></div></div><div class="sk-sub">Framework</div></div>
+        <div class="skill-card"><span class="sk-icon">⚡</span><div class="sk-name">JavaScript</div><div class="sk-bar"><div class="sk-fill"></div></div><div class="sk-sub">Interactivity</div></div>
+      </div>
+    </div>
+    <div class="skill-cat reveal">
+      <div class="skill-cat-hdr"><div class="cat-ico">🛠️</div><div><div class="cat-name">Tools &amp; Platforms</div><div class="cat-desc">Productivity and deployment</div></div></div>
+      <div class="skill-grid">
+        <div class="skill-card"><span class="sk-icon">📝</span><div class="sk-name">MS Word</div><div class="sk-bar"><div class="sk-fill"></div></div><div class="sk-sub">Documentation</div></div>
+        <div class="skill-card"><span class="sk-icon">📊</span><div class="sk-name">MS Excel</div><div class="sk-bar"><div class="sk-fill"></div></div><div class="sk-sub">Spreadsheets</div></div>
+        <div class="skill-card"><span class="sk-icon">🤖</span><div class="sk-name">ChatGPT</div><div class="sk-bar"><div class="sk-fill"></div></div><div class="sk-sub">AI-Assisted Dev</div></div>
+        <div class="skill-card"><span class="sk-icon">🚀</span><div class="sk-name">Hostinger</div><div class="sk-bar"><div class="sk-fill"></div></div><div class="sk-sub">Web Hosting</div></div>
+      </div>
+    </div>
+    <div class="skill-cat reveal">
+      <div class="skill-cat-hdr"><div class="cat-ico">🎨</div><div><div class="cat-name">Creative Suite</div><div class="cat-desc">Photo &amp; video editing</div></div></div>
+      <div class="skill-grid">
+        <div class="skill-card"><span class="sk-icon">🖼️</span><div class="sk-name">PicsArt</div><div class="sk-bar"><div class="sk-fill"></div></div><div class="sk-sub">Photo Editing</div></div>
+        <div class="skill-card"><span class="sk-icon">🌅</span><div class="sk-name">Lightroom</div><div class="sk-bar"><div class="sk-fill"></div></div><div class="sk-sub">Color Grading</div></div>
+        <div class="skill-card"><span class="sk-icon">🎬</span><div class="sk-name">CapCut</div><div class="sk-bar"><div class="sk-fill"></div></div><div class="sk-sub">Video Editing</div></div>
+        <div class="skill-card"><span class="sk-icon">📽️</span><div class="sk-name">KineMaster</div><div class="sk-bar"><div class="sk-fill"></div></div><div class="sk-sub">Mobile Editing</div></div>
+      </div>
+    </div>
+  </div>
+  <script>
+  const so=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('animate');so.unobserve(e.target);}});},{threshold:0.15});
+  document.querySelectorAll('.skill-card').forEach(c=>so.observe(c));
+  </script>
+</main>
+<button class="chat-fab" id="chatFab">
+  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l5.09-1.35A9.92 9.92 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.66 0-3.21-.49-4.5-1.33l-.32-.2-3.02.8.82-2.96-.21-.33A7.95 7.95 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.17-5.24c-.23-.12-1.35-.67-1.56-.74s-.36-.12-.51.12-.59.74-.72.9-.26.18-.49.06c-.23-.12-.97-.36-1.85-1.14-.68-.61-1.14-1.36-1.27-1.59s-.01-.35.1-.47c.1-.1.23-.26.34-.39s.15-.23.23-.38.04-.29-.02-.41-.51-1.22-.7-1.68-.37-.38-.51-.39-.28-.01-.43-.01-.39.06-.6.29-.78.76-.78 1.85.8 2.15.91 2.3c.12.15 1.58 2.41 3.82 3.38.53.23.95.37 1.27.47.54.17 1.03.15 1.41.09.43-.07 1.35-.55 1.54-1.08.19-.53.19-.99.13-1.08-.06-.1-.22-.16-.46-.28z"/></svg>
+  <div class="fab-badge">AI</div>
+</button>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-av">🤖</div>
+    <div class="chat-hinfo">
+      <div class="chat-hname">PandeyG Bot ✨</div>
+      <div class="chat-hstatus">Online — Always here for you!</div>
+    </div>
+    <button class="chat-close" id="chatClose">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="quick-replies" id="quickReplies"></div>
+  <div class="chat-input-row">
+    <input type="text" class="chat-input" id="chatInputField" placeholder="Ask me anything about Priyanshu... 😊" maxlength="200">
+    <button class="chat-send" id="chatSendBtn">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
